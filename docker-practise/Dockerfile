@@ -14,6 +14,7 @@ WORKDIR /Sample
 COPY . .
 
 # test
+ENV TEAMCITY_PROJECT_NAME=fake 
 RUN dotnet test ./docker-sample/tests 
 
 # publish
