@@ -21,9 +21,10 @@ namespace docker_sample.Controllers
            
         }
 
-        [HttpPost("[action]")]
-        public async Task EmailRandomNames(Range range, string email = "test@fake.com")
+        [HttpPost("[action]")]      
+        public async Task EmailRandomNames()
         {
+            string email = "test@fake.com";
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress("Generator", "generator@generate.com"));
             message.To.Add(new MailboxAddress("", email));
@@ -43,6 +44,6 @@ namespace docker_sample.Controllers
             }
         }
 
-      
+       
     }
 }

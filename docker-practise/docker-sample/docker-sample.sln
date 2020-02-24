@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "docker-sample", "docker-sam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tests", "tests\tests.csproj", "{F2182A7D-9822-46C6-9E71-95332FB87235}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "integration", "integration\integration.csproj", "{51064521-8E52-4A10-92DA-A461AE0F9E59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F2182A7D-9822-46C6-9E71-95332FB87235}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2182A7D-9822-46C6-9E71-95332FB87235}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2182A7D-9822-46C6-9E71-95332FB87235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51064521-8E52-4A10-92DA-A461AE0F9E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51064521-8E52-4A10-92DA-A461AE0F9E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51064521-8E52-4A10-92DA-A461AE0F9E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51064521-8E52-4A10-92DA-A461AE0F9E59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
