@@ -10,7 +10,8 @@ services:
       - 8111:8111
     restart: unless-stopped
   teamcity-agent:
-    image: jetbrains/teamcity-agent:2017.1.2
+    image: docker/teamcity-agent-with-compose:2017.1.2
+    build: ./agent
     environment:
       SERVER_URL: http://teamcity:8111
     volumes:
