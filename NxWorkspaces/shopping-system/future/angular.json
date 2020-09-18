@@ -1,0 +1,233 @@
+{
+  "version": 1,
+  "projects": {
+    "kamazon": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/kamazon",
+      "sourceRoot": "apps/kamazon/src",
+      "prefix": "future",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/kamazon",
+            "index": "apps/kamazon/src/index.html",
+            "main": "apps/kamazon/src/main.ts",
+            "polyfills": "apps/kamazon/src/polyfills.ts",
+            "tsConfig": "apps/kamazon/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/kamazon/src/favicon.ico",
+              "apps/kamazon/src/assets"
+            ],
+            "styles": ["apps/kamazon/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/kamazon/src/environments/environment.ts",
+                  "with": "apps/kamazon/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "kamazon:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "kamazon:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "kamazon:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/kamazon/tsconfig.app.json",
+              "apps/kamazon/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/kamazon/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/kamazon/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "kamazon-e2e": {
+      "root": "apps/kamazon-e2e",
+      "sourceRoot": "apps/kamazon-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/kamazon-e2e/cypress.json",
+            "tsConfig": "apps/kamazon-e2e/tsconfig.e2e.json",
+            "devServerTarget": "kamazon:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "kamazon:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/kamazon-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/kamazon-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "shared-ui-common": {
+      "projectType": "library",
+      "root": "libs/shared/ui-common",
+      "sourceRoot": "libs/shared/ui-common/src",
+      "prefix": "future",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui-common/tsconfig.lib.json",
+              "libs/shared/ui-common/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-common/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui-common/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-util-auth": {
+      "projectType": "library",
+      "root": "libs/shared/util-auth",
+      "sourceRoot": "libs/shared/util-auth/src",
+      "prefix": "future",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/util-auth/tsconfig.lib.json",
+              "libs/shared/util-auth/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/util-auth/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/util-auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "kamazon"
+}
